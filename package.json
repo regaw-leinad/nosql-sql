@@ -1,0 +1,16 @@
+{
+  "name": "mongo-documentdb",
+  "version": "0.0.1",
+  "description": "Build DocumentDB query objects with MongoDB syntax",
+  "main": "./index.js",
+  "keywords": [
+    "Azure",
+    "DocumentDB",
+    "Mongo",
+    "MongoDB",
+    "SQL",
+    "query"
+  ],
+  "author": "Dan Wager",
+  "license": "MIT"
+}
