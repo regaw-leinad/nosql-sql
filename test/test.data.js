@@ -17,7 +17,7 @@ module.exports = {
         simple: {
             query: {test: 123},
             result: {
-                query: 'SELECT * FROM c WHERE (c.test = @v0)',
+                query: 'SELECT * FROM c WHERE c.test = @v0',
                 parameters: [
                     {
                         name: '@v0',
@@ -29,7 +29,7 @@ module.exports = {
         space: {
             query: {"a space ": 123},
             result: {
-                query: 'SELECT * FROM c WHERE (c["a space "] = @v0)',
+                query: 'SELECT * FROM c WHERE c["a space "] = @v0',
                 parameters: [
                     {
                         name: '@v0',
