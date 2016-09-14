@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Build DocumentDB query objects with MongoDB syntax",
   "main": "./index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
   "keywords": [
     "Azure",
     "DocumentDB",
@@ -12,5 +15,12 @@
     "query"
   ],
   "author": "Dan Wager",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "1.8.3"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "3.0.2"
+  }
 }
