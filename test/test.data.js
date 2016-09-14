@@ -13,8 +13,8 @@ module.exports = {
             parameters: []
         }
     },
-    simple: {
-        single: {
+    single: {
+        simple: {
             query: {test: 123},
             result: {
                 query: 'SELECT * FROM c WHERE (c.test = @v0)',
@@ -37,13 +37,27 @@ module.exports = {
                     }
                 ]
             }
-        }
-    },
-    implicitAnd: {
-        simple: {
-            query: {test: 123, test2: 456},
+        },
+        implicitAnd: {
+            query: {test1: 123, test2: 456},
             result: {
-                query: 'SELECT * FROM c WHERE (c.test = @v0 AND c.test2 = @v1)',
+                query: 'SELECT * FROM c WHERE (c.test1 = @v0 AND c.test2 = @v1)',
+                parameters: [
+                    {
+                        name: '@v0',
+                        value: 123
+                    },
+                    {
+                        name: '@v1',
+                        value: 456
+                    }
+                ]
+            }
+        },
+        explicitAnd: {
+            query: {$and: [{test1: 123}, {test2: 456}]},
+            result: {
+                query: 'SELECT * FROM c WHERE (c.test1 = @v0 AND c.test2 = @v1)',
                 parameters: [
                     {
                         name: '@v0',

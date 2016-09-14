@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-var buildQuery = require('../index');
+var buildQuery = require('../lib/queryBuilder');
 var data = require('./test.data');
 
 function expectBuilder (data) {
@@ -17,16 +17,20 @@ describe('with no arguments', () => {
     });
 });
 
-describe('with queryFilter', () => {
-    it('should handle a simple single KV pair', () => {
-        expectBuilder(data.simple.single);
+describe('with single-level queryFilter', () => {
+    it('should handle a simple KV pair', () => {
+        expectBuilder(data.single.simple);
     });
 
     it('should handle a spaces in the key', () => {
-        expectBuilder(data.simple.space);
+        expectBuilder(data.single.space);
     });
 
     it('should handle implicit $and', () => {
-        expectBuilder(data.implicitAnd.simple);
+        expectBuilder(data.single.implicitAnd);
+    });
+
+    it('should handle explicit $and', () => {
+        expectBuilder(data.single.explicitAnd);
     });
 });
