@@ -119,6 +119,23 @@ describe('#buildQuery()', function () {
                 expectBuilderThrow({test: {$in: values}}, 'Exceeded limit of 200 for $in');
             });
         });
-    });
 
+        describe('$lt', function () {
+            it('Handles single $lt', function () {
+                expectBuilderEql(data.$lt.single);
+            });
+
+            it('Handles multiple $lt', function () {
+                expectBuilderEql(data.$lt.multiple);
+            });
+
+            it('Throws when value is not string or number', function () {
+                expectBuilderThrow(data.$lt.throwObject, 'Argument to $lt must be either a string or number');
+            });
+
+            it('Throws when not nested', function () {
+                expectBuilderThrow(data.$lt.throwNested, 'Incorrect syntax using $lt: Must be nested');
+            });
+        });
+    });
 });

@@ -187,5 +187,41 @@ module.exports = {
         throwValueLength: {
             query: {test: {$in: []}}
         }
+    },
+    $lt: {
+        single: {
+            query: {test: {$lt: 6}},
+            result: {
+                query: 'SELECT * FROM c WHERE (c.test < @v0)',
+                parameters: [
+                    {
+                        name: '@v0',
+                        value: 6
+                    }
+                ]
+            }
+        },
+        multiple: {
+            query: {test: {$lt: 6}, test2: {$lt: 1}},
+            result: {
+                query: 'SELECT * FROM c WHERE ((c.test < @v0) AND (c.test2 < @v1))',
+                parameters: [
+                    {
+                        name: '@v0',
+                        value: 6
+                    },
+                    {
+                        name: '@v1',
+                        value: 1
+                    }
+                ]
+            }
+        },
+        throwObject: {
+            query: {test: {$lt: {will: 'throw'}}}
+        },
+        throwNested: {
+            query: {$lt: {test: 6}}
+        }
     }
 };
