@@ -8,7 +8,7 @@ function expectBuilderEql (data) {
 }
 
 function expectBuilderThrow (data, errorMsg) {
-    expect(buildQuery.bind(this, data.query)).to.throw(errorMsg);
+    expect(buildQuery.bind(this, data.query || data)).to.throw(errorMsg);
 }
 
 describe('#buildQuery()', function () {
@@ -110,13 +110,13 @@ describe('#buildQuery()', function () {
             });
 
             it('Throws when more than 200 values in array', function () {
-                var query = {query: {test: {$in: []}}};
                 // Simulate 201 entries in value array
+                var values = [];
                 for (var i = 0; i <= 200; i++) {
-                    query.query.test.$in[i] = i;
+                    values[i] = i;
                 }
 
-                expectBuilderThrow(query, 'Exceeded limit of 200 for $in');
+                expectBuilderThrow({test: {$in: values}}, 'Exceeded limit of 200 for $in');
             });
         });
     });
