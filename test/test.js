@@ -45,6 +45,10 @@ describe('with single-level queryFilter', () => {
     it('should handle $in', () => {
         expectBuilderEql(data.single.inClause);
     });
+
+    it('should handle $between', () => {
+        expectBuilderEql(data.single.between);
+    });
 });
 
 describe('with a nested queryFilter', () => {

@@ -88,6 +88,22 @@ module.exports = {
                     }
                 ]
             }
+        },
+        between: {
+            query: {test: {$between: [1, 5]}},
+            result: {
+                query: 'SELECT * FROM c WHERE (c.test BETWEEN @v0 AND @v1)',
+                parameters: [
+                    {
+                        name: '@v0',
+                        value: 1
+                    },
+                    {
+                        name: '@v1',
+                        value: 5
+                    }
+                ]
+            }
         }
     },
     nested: {
