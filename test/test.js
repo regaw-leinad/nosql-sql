@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-var buildQuery = require('../lib/queryBuilder');
+var buildQuery = require('../lib');
 var data = require('./test.data');
 
 function expectBuilderEql (data) {
