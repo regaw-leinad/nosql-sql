@@ -177,6 +177,15 @@ module.exports = {
                     }
                 ]
             }
+        },
+        throwNested: {
+            query: {$in: {test: [1, 2]}}
+        },
+        throwValue: {
+            query: {test: {$in: 'nope'}}
+        },
+        throwValueLength: {
+            query: {test: {$in: []}}
         }
     }
 };

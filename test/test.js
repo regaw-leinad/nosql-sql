@@ -99,6 +99,25 @@ describe('#buildQuery()', function () {
             it('Handles simple $in', function () {
                 expectBuilderEql(data.$in.simple);
             });
+
+            it('Throws when not nested', function () {
+                expectBuilderThrow(data.$in.throwNested, 'Incorrect syntax using $in: Must be nested');
+            });
+
+            it('Throws when value is not array of length > 0', function () {
+                expectBuilderThrow(data.$in.throwValue, 'Value of $in must be an array of length greater than 0');
+                expectBuilderThrow(data.$in.throwValueLength, 'Value of $in must be an array of length greater than 0');
+            });
+
+            it('Throws when more than 200 values in array', function () {
+                var query = {query: {test: {$in: []}}};
+                // Simulate 201 entries in value array
+                for (var i = 0; i <= 200; i++) {
+                    query.query.test.$in[i] = i;
+                }
+
+                expectBuilderThrow(query, 'Exceeded limit of 200 for $in');
+            });
         });
     });
 
