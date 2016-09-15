@@ -1,20 +1,22 @@
 module.exports = {
-    undef: {
-        query: undefined,
-        result: {
-            query: 'SELECT * FROM c',
-            parameters: []
-        }
-    },
     empty: {
-        query: {},
-        result: {
-            query: 'SELECT * FROM c',
-            parameters: []
+        undef: {
+            query: undefined,
+            result: {
+                query: 'SELECT * FROM c',
+                parameters: []
+            }
+        },
+        empty: {
+            query: {},
+            result: {
+                query: 'SELECT * FROM c',
+                parameters: []
+            }
         }
     },
-    single: {
-        simple: {
+    simple: {
+        single: {
             query: {test: 123},
             result: {
                 query: 'SELECT * FROM c WHERE c.test = @v0',
@@ -37,8 +39,15 @@ module.exports = {
                     }
                 ]
             }
-        },
-        implicitAnd: {
+        }
+    },
+    clause: {
+        invalid: {
+            query: {test: {$notClause: 1}}
+        }
+    },
+    $and: {
+        implicit: {
             query: {test1: 123, test2: 456},
             result: {
                 query: 'SELECT * FROM c WHERE (c.test1 = @v0 AND c.test2 = @v1)',
@@ -54,7 +63,7 @@ module.exports = {
                 ]
             }
         },
-        explicitAnd: {
+        explicit: {
             query: {$and: [{test1: 123}, {test2: 456}]},
             result: {
                 query: 'SELECT * FROM c WHERE (c.test1 = @v0 AND c.test2 = @v1)',
@@ -70,10 +79,51 @@ module.exports = {
                 ]
             }
         },
-        explicitAndThrow: {
+        throwNested: {
             query: {test: {$and: [{t: 1}, {t: 2}]}}
         },
-        inClause: {
+        throwValue: {
+            query: {$and: {nope: 'nope'}}
+        }
+    },
+    $gt: {
+        single: {
+            query: {test: {$gt: 6}},
+            result: {
+                query: 'SELECT * FROM c WHERE (c.test > @v0)',
+                parameters: [
+                    {
+                        name: '@v0',
+                        value: 6
+                    }
+                ]
+            }
+        },
+        multiple: {
+            query: {test: {$gt: 6}, test2: {$gt: 1}},
+            result: {
+                query: 'SELECT * FROM c WHERE ((c.test > @v0) AND (c.test2 > @v1))',
+                parameters: [
+                    {
+                        name: '@v0',
+                        value: 6
+                    },
+                    {
+                        name: '@v1',
+                        value: 1
+                    }
+                ]
+            }
+        },
+        throwObject: {
+            query: {test: {$gt: {will: 'throw'}}}
+        },
+        throwNested: {
+            query: {$gt: {test: 6}}
+        }
+    },
+    $in: {
+        simple: {
             query: {test: {$in: [1, 2]}},
             result: {
                 query: 'SELECT * FROM c WHERE (c.test IN(@v0, @v1))',
@@ -88,8 +138,10 @@ module.exports = {
                     }
                 ]
             }
-        },
-        between: {
+        }
+    },
+    $between: {
+        simple: {
             query: {test: {$between: [1, 5]}},
             result: {
                 query: 'SELECT * FROM c WHERE (c.test BETWEEN @v0 AND @v1)',
@@ -104,11 +156,6 @@ module.exports = {
                     }
                 ]
             }
-        }
-    },
-    nested: {
-        invalid: {
-            query: {test: {$notClause: 1}}
         }
     }
 };

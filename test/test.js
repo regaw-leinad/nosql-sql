@@ -11,48 +11,79 @@ function expectBuilderThrow (data, errorMsg) {
     expect(buildQuery.bind(this, data.query)).to.throw(errorMsg);
 }
 
-describe('with no arguments', function () {
-    it('should return non-scoped query when passed undefined', function () {
-        expectBuilderEql(data.undef);
+describe('#buildQuery()', function () {
+    describe('Empty query', function () {
+        it('Returns default query when passed undefined', function () {
+            expectBuilderEql(data.empty.undef);
+        });
+
+        it('Returns default query when passed {}', function () {
+            expectBuilderEql(data.empty.empty);
+        });
     });
 
-    it('should return non-scoped query when passed {}', function () {
-        expectBuilderEql(data.empty);
-    });
-});
+    describe('Simple query', function () {
+        it('Handles a single field query', function () {
+            expectBuilderEql(data.simple.single);
+        });
 
-describe('with single-level queryFilter', function () {
-    it('should handle a simple KV pair', function () {
-        expectBuilderEql(data.single.simple);
-    });
-
-    it('should handle a spaces in the key', function () {
-        expectBuilderEql(data.single.space);
+        it('Handles whitespace in the key', function () {
+            expectBuilderEql(data.simple.space);
+        });
     });
 
-    it('should handle implicit $and', function () {
-        expectBuilderEql(data.single.implicitAnd);
+    describe('Clauses', function () {
+        describe('Invalid clause', function () {
+            expectBuilderThrow(data.clause.invalid, 'Nested keys must be clause: $notClause');
+        });
+
+        describe('$and', function () {
+            it('Handles implicit $and', function () {
+                expectBuilderEql(data.$and.implicit);
+            });
+
+            it('Handles explicit $and', function () {
+                expectBuilderEql(data.$and.explicit);
+            });
+
+            it('Throws when using $and as nested clause', function () {
+                expectBuilderThrow(data.$and.throwNested, 'Incorrect syntax using $and: Must not be nested');
+            });
+
+            it('Throws when value is not array', function () {
+                expectBuilderThrow(data.$and.throwValue, 'Invalid $and value');
+            });
+        });
+
+        describe('$between', function () {
+            it('Handles simple $between', function () {
+                expectBuilderEql(data.$between.simple);
+            });
+        });
+
+        describe('$gt', function () {
+            it('Handles single $gt', function () {
+                expectBuilderEql(data.$gt.single);
+            });
+
+            it('Handles multiple $gt', function () {
+                expectBuilderEql(data.$gt.multiple);
+            });
+
+            it('Throws when value is not string or number', function () {
+                expectBuilderThrow(data.$gt.throwObject, 'Argument to $gt must be either a string or number');
+            });
+
+            it('Throws when not nested', function () {
+                expectBuilderThrow(data.$gt.throwNested, 'Incorrect syntax using $gt: Must be nested');
+            });
+        });
+
+        describe('$in', function () {
+            it('Handles simple $in', function () {
+                expectBuilderEql(data.$in.simple);
+            });
+        });
     });
 
-    it('should handle explicit $and', function () {
-        expectBuilderEql(data.single.explicitAnd);
-    });
-
-    it('should throw immediately-nested $and', function () {
-        expectBuilderThrow(data.single.explicitAndThrow, 'Incorrect syntax using nested $and')
-    });
-
-    it('should handle $in', function () {
-        expectBuilderEql(data.single.inClause);
-    });
-
-    it('should handle $between', function () {
-        expectBuilderEql(data.single.between);
-    });
-});
-
-describe('with a nested queryFilter', function () {
-    it('should throw on an invalid nested clause', function () {
-        expectBuilderThrow(data.nested.invalid, 'Nested keys must be clause: $notClause');
-    });
 });
