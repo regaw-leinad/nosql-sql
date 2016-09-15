@@ -95,6 +95,24 @@ describe('#buildQuery()', function () {
             });
         });
 
+        describe('$gte', function () {
+            it('Handles single $gte', function () {
+                expectBuilderEql(data.$gte.single);
+            });
+
+            it('Handles multiple $gte', function () {
+                expectBuilderEql(data.$gte.multiple);
+            });
+
+            it('Throws when value is not string or number', function () {
+                expectBuilderThrow(data.$gte.throwObject, 'Argument to $gte must be either a string or number');
+            });
+
+            it('Throws when not nested', function () {
+                expectBuilderThrow(data.$gte.throwNested, 'Incorrect syntax using $gte: Must be nested');
+            });
+        });
+
         describe('$in', function () {
             it('Handles simple $in', function () {
                 expectBuilderEql(data.$in.simple);
