@@ -34,7 +34,7 @@ describe('#buildQuery()', function () {
 
     describe('Clauses', function () {
         it('Throws on invalid', function () {
-            expectBuilderThrow(data.clause.invalid, 'Nested keys must be clause: $notClause');
+            expectBuilderThrow(data.clause.invalid, 'Invalid clause: $notClause');
         });
 
         describe('$and', function () {
