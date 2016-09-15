@@ -42,3 +42,9 @@ describe('with single-level queryFilter', () => {
         expectBuilderThrow(data.single.explicitAndThrow, 'Incorrect syntax using nested $and')
     });
 });
+
+describe('with a nested queryFilter', () => {
+    it('should throw an invalid nested command', () => {
+        expectBuilderThrow(data.nested.invalid, 'Nested keys must be command: $notCommand');
+    });
+});
