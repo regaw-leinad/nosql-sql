@@ -65,7 +65,7 @@ describe('#buildQuery()', function () {
                 expectBuilderThrow(data.$between.throwValueLength, 'Value of $between must be an array of length 2');
             });
 
-            it('Throws when value array contains not only strings or numbers', function () {
+            it('Throws when value contains not only strings or numbers', function () {
                 expectBuilderThrow(data.$between.throwValueType1, 'Arguments to $between must be either strings or numbers');
                 expectBuilderThrow(data.$between.throwValueType2, 'Arguments to $between must be either strings or numbers');
                 expectBuilderThrow(data.$between.throwValueType3, 'Arguments to $between must be either strings or numbers');
