@@ -7,6 +7,10 @@ function expectBuilderEql (data) {
     expect(buildQuery(data.query)).to.eql(data.result);
 }
 
+function expectBuilderThrow (data, errorMsg) {
+    expect(buildQuery.bind(this, data.query)).to.throw(errorMsg);
+}
+
 describe('with no arguments', () => {
     it('should return non-scoped query when passed undefined', () => {
         expectBuilderEql(data.undef);
@@ -32,5 +36,9 @@ describe('with single-level queryFilter', () => {
 
     it('should handle explicit $and', () => {
         expectBuilderEql(data.single.explicitAnd);
+    });
+
+    it('should throw immediately-nested $and', () => {
+        expectBuilderThrow(data.single.explicitAndThrow, 'Incorrect syntax using nested $and')
     });
 });

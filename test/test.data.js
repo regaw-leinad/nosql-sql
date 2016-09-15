@@ -69,6 +69,9 @@ module.exports = {
                     }
                 ]
             }
+        },
+        explicitAndThrow: {
+            query: {test: {$and: [{t: 1}, {t: 2}]}}
         }
     }
 };
