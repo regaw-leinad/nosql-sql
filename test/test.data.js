@@ -72,6 +72,22 @@ module.exports = {
         },
         explicitAndThrow: {
             query: {test: {$and: [{t: 1}, {t: 2}]}}
+        },
+        inCommand: {
+            query: {test: {$in: [1, 2]}},
+            result: {
+                query: 'SELECT * FROM c WHERE (c.test IN(@v0, @v1))',
+                parameters: [
+                    {
+                        name: '@v0',
+                        value: 1
+                    },
+                    {
+                        name: '@v1',
+                        value: 2
+                    }
+                ]
+            }
         }
     },
     nested: {

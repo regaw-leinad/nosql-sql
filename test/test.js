@@ -41,6 +41,10 @@ describe('with single-level queryFilter', () => {
     it('should throw immediately-nested $and', () => {
         expectBuilderThrow(data.single.explicitAndThrow, 'Incorrect syntax using nested $and')
     });
+
+    it('should handle $in', () => {
+        expectBuilderEql(data.single.inCommand);
+    });
 });
 
 describe('with a nested queryFilter', () => {
