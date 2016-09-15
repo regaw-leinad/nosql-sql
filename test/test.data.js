@@ -73,7 +73,7 @@ module.exports = {
         explicitAndThrow: {
             query: {test: {$and: [{t: 1}, {t: 2}]}}
         },
-        inCommand: {
+        inClause: {
             query: {test: {$in: [1, 2]}},
             result: {
                 query: 'SELECT * FROM c WHERE (c.test IN(@v0, @v1))',
@@ -92,7 +92,7 @@ module.exports = {
     },
     nested: {
         invalid: {
-            query: {test: {$notCommand: 1}}
+            query: {test: {$notClause: 1}}
         }
     }
 };

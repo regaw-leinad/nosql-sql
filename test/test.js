@@ -43,12 +43,12 @@ describe('with single-level queryFilter', () => {
     });
 
     it('should handle $in', () => {
-        expectBuilderEql(data.single.inCommand);
+        expectBuilderEql(data.single.inClause);
     });
 });
 
 describe('with a nested queryFilter', () => {
-    it('should throw an invalid nested command', () => {
-        expectBuilderThrow(data.nested.invalid, 'Nested keys must be command: $notCommand');
+    it('should throw on an invalid nested clause', () => {
+        expectBuilderThrow(data.nested.invalid, 'Nested keys must be clause: $notClause');
     });
 });
