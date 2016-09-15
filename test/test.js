@@ -59,6 +59,10 @@ describe('#buildQuery()', function () {
             it('Handles simple $between', function () {
                 expectBuilderEql(data.$between.simple);
             });
+
+            it('Throws when not nested', function () {
+                expectBuilderThrow(data.$between.throwNested, 'Incorrect syntax using $between: Must be nested');
+            });
         });
 
         describe('$gt', function () {
