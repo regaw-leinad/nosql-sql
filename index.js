@@ -1,1 +1,1 @@
-module.exports = require('./lib/queryBuilder');
+module.exports = require('./lib');
