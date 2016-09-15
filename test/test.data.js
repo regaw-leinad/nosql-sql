@@ -103,6 +103,24 @@ module.exports = {
                 ]
             }
         },
+        throwValue: {
+            query: {test: {$between: 'nope'}}
+        },
+        throwValueLength: {
+            query: {test: {$between: ['nope', 'nope', 'nope']}}
+        },
+        throwValueType1: {
+            query: {test: {$between: [{nope: 'nope'}, 3]}}
+        },
+        throwValueType2: {
+            query: {test: {$between: [1, {nope: 'nope'}]}}
+        },
+        throwValueType3: {
+            query: {test: {$between: [{nope: 'nope'}, {nope: 'nope'}]}}
+        },
+        throwValueType4: {
+            query: {test: {$between: [[], {}]}}
+        },
         throwNested: {
             query: {$between: {test: [1, 2]}}
         }

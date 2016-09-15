@@ -60,6 +60,18 @@ describe('#buildQuery()', function () {
                 expectBuilderEql(data.$between.simple);
             });
 
+            it('Throws when value is not array length of 2', function () {
+                expectBuilderThrow(data.$between.throwValue, 'Value of $between must be an array of length 2');
+                expectBuilderThrow(data.$between.throwValueLength, 'Value of $between must be an array of length 2');
+            });
+
+            it('Throws when value array contains not only strings or numbers', function () {
+                expectBuilderThrow(data.$between.throwValueType1, 'Arguments to $between must be either strings or numbers');
+                expectBuilderThrow(data.$between.throwValueType2, 'Arguments to $between must be either strings or numbers');
+                expectBuilderThrow(data.$between.throwValueType3, 'Arguments to $between must be either strings or numbers');
+                expectBuilderThrow(data.$between.throwValueType4, 'Arguments to $between must be either strings or numbers');
+            });
+
             it('Throws when not nested', function () {
                 expectBuilderThrow(data.$between.throwNested, 'Incorrect syntax using $between: Must be nested');
             });
