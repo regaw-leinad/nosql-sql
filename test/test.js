@@ -33,7 +33,7 @@ describe('#buildQuery()', function () {
     });
 
     describe('Clauses', function () {
-        describe('Invalid clause', function () {
+        it('Throws on invalid', function () {
             expectBuilderThrow(data.clause.invalid, 'Nested keys must be clause: $notClause');
         });
 
