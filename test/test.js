@@ -155,5 +155,23 @@ describe('#buildQuery()', function () {
                 expectBuilderThrow(data.$lt.throwNested, 'Incorrect syntax using $lt: Must be nested');
             });
         });
+
+        describe('$lte', function () {
+            it('Handles single $lte', function () {
+                expectBuilderEql(data.$lte.single);
+            });
+
+            it('Handles multiple $lte', function () {
+                expectBuilderEql(data.$lte.multiple);
+            });
+
+            it('Throws when value is not string or number', function () {
+                expectBuilderThrow(data.$lte.throwObject, 'Argument to $lte must be either a string or number');
+            });
+
+            it('Throws when not nested', function () {
+                expectBuilderThrow(data.$lte.throwNested, 'Incorrect syntax using $lte: Must be nested');
+            });
+        });
     });
 });
