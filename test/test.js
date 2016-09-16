@@ -32,9 +32,9 @@ describe('#buildQuery()', function () {
         });
     });
 
-    describe('Clauses', function () {
+    describe('Operators', function () {
         it('Throws on invalid', function () {
-            expectBuilderThrow(data.clause.invalid, 'Invalid clause: $notClause');
+            expectBuilderThrow(data.operator.invalid, 'Invalid operator: $notOperator');
         });
 
         describe('$and', function () {
@@ -46,7 +46,7 @@ describe('#buildQuery()', function () {
                 expectBuilderEql(data.$and.explicit);
             });
 
-            it('Throws when using $and as nested clause', function () {
+            it('Throws when using $and as nested operator', function () {
                 expectBuilderThrow(data.$and.throwNested, 'Incorrect syntax using $and: Must not be nested');
             });
 

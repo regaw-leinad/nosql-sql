@@ -41,9 +41,9 @@ module.exports = {
             }
         }
     },
-    clause: {
+    operator: {
         invalid: {
-            query: {test: {$notClause: 1}}
+            query: {test: {$notOperator: 1}}
         }
     },
     $and: {
