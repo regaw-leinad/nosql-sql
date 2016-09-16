@@ -1,6 +1,6 @@
 {
   "name": "nosql-sql",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Easily build parameterized DocumentDB queries (SQL) with MongoDB syntax (NoSQL)",
   "main": "./index.js",
   "scripts": {
