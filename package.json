@@ -1,7 +1,7 @@
 {
-  "name": "mongo-documentdb",
+  "name": "nosql-sql",
   "version": "0.0.1",
-  "description": "Build DocumentDB query objects with MongoDB syntax",
+  "description": "Easily build parameterized DocumentDB queries (SQL) with MongoDB syntax (NoSQL)",
   "main": "./index.js",
   "scripts": {
     "test": "mocha --recursive"
@@ -12,6 +12,7 @@
     "Mongo",
     "MongoDB",
     "SQL",
+    "NoSQL",
     "query"
   ],
   "author": "Dan Wager",
