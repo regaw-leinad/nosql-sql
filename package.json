@@ -4,7 +4,7 @@
   "description": "Easily build parameterized DocumentDB queries (SQL) with MongoDB syntax (NoSQL)",
   "main": "./index.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive ./test"
   },
   "keywords": [
     "Azure",
