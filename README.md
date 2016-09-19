@@ -8,7 +8,7 @@ Easily build parameterized DocumentDB queries (SQL) with MongoDB syntax (NoSQL)
     
 ## Motivation
 
-Coming from MongoDB, and perplexed by the notion of writing SQL statements to query a NoSQL database, I set out to write a translator
+I thought it was a bit odd writing SQL statements to query [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/)'s NoSQL database. So, I set out to write something to allow me to do just that: Turn MongoDB-like queries into [DocumentDB parameterized queries](https://azure.microsoft.com/en-us/blog/announcing-sql-parameterization-in-documentdb/).
 
 ## Usage
 
@@ -21,13 +21,13 @@ var buildQuery = require('nosql-sql');
 var myQuery = {first_name: 'Dan', age: {$between: [18, 25]}};
 
 // Build the query object for the DocumentDB client
-var builtQuery = buildQuery(myQuery);
+var queryObject = buildQuery(myQuery);
 
 // Assuming you have a DocumentDB client...
-self.client.queryDocuments(self.collection._self, builtQuery).toArray()...
+documentDBClient.queryDocuments(collection._self, queryObject).toArray()...
 ```
 
-The result of `buildQuery(myQuery)` looks like this
+The result of the example `buildQuery(myQuery)` above:
 ```json
 {
   "query": "SELECT * FROM c WHERE (c.first_name = @v0 AND (c.age BETWEEN @v1 AND @v2))",
@@ -50,11 +50,11 @@ The result of `buildQuery(myQuery)` looks like this
 
 ## Supported Operators
 
->NOTE: The examples below show only snippets related to each specific operator. They can be combined and nested as appropriate, as long as proper syntax is maintained.
-
 * **$and** `{x: 5, y: 10}` or `{$and: [{x: 5}, {y: 10}]}`
 * **$between** `{x: {$between: [1, 7]}}`
 * **$gt** `{x: {$gt: 7}}`
+
+>NOTE: The example snippets above show only the parts related to the specific operator. They can be combined or nested as appropriate, as long as proper syntax is maintained.
 
 ## In Development
 
