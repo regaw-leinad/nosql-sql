@@ -8,7 +8,7 @@ Easily build parameterized DocumentDB queries (SQL) with MongoDB syntax (NoSQL)
     
 ## Motivation
 
-I thought it was a bit odd writing SQL statements to query [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/)'s NoSQL database. So, I set out to write something to allow me to do just that: Turn MongoDB-like queries into [DocumentDB parameterized queries](https://azure.microsoft.com/en-us/blog/announcing-sql-parameterization-in-documentdb/).
+I thought it was a bit odd writing SQL statements to query [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/)'s NoSQL database. So I am writing this to turn MongoDB-syntax queries into [DocumentDB parameterized queries](https://azure.microsoft.com/en-us/blog/announcing-sql-parameterization-in-documentdb/).
 
 ## Usage
 
