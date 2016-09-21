@@ -8,7 +8,7 @@ Easily build parameterized DocumentDB queries (SQL) with MongoDB syntax (NoSQL)
     
 ## Motivation
 
-I thought it was a bit odd writing SQL statements to query [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/)'s NoSQL database. So I am writing this to turn MongoDB-syntax queries into [DocumentDB parameterized queries](https://azure.microsoft.com/en-us/blog/announcing-sql-parameterization-in-documentdb/).
+Writing SQL statements to query DocumentDB's NoSQL database seemed slightly odd to me, especially when it came to writing the more complex, [SQLi](https://en.wikipedia.org/wiki/SQL_injection)-free, [parameterized queries](https://azure.microsoft.com/en-us/blog/announcing-sql-parameterization-in-documentdb/). This project exists to abstract the building of these large query objects by utilizing MongoDB-style syntax. 
 
 ## Usage
 
@@ -49,19 +49,19 @@ The result of the example `buildQuery(myQuery)` above:
 ```
 
 ## Supported Operators
+The format below is: **operator** `{ query snippet }`
+These query snippets can be combined or nested as appropriate, as long as proper syntax is maintained.
 
 * **$and** `{x: 5, y: 10}` or `{$and: [{x: 5}, {y: 10}]}`
 * **$between** `{x: {$between: [1, 7]}}`
 * **$gt** `{x: {$gt: 7}}`
 
->NOTE: The example snippets above show only the parts related to the specific operator. They can be combined or nested as appropriate, as long as proper syntax is maintained.
-
 ## In Development
 
 This project is currently under development while I add support for all DocumentDB operators, as well as more query configuration options.
 
-* [ ] Support for what to SELECT (`SELECT c.name, c.other...`)
-* [ ] Support for collection name support (`...FROM myName m WHERE m.field = ...`)
+* [ ] Configuration for what to SELECT (`SELECT c.name, c.other...`)
+* [ ] Configuration for custom collection name (`...FROM myName m WHERE m.field = ...`)
 
 ## Contributing
 
