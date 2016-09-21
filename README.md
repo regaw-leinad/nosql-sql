@@ -8,7 +8,7 @@ Easily build parameterized DocumentDB queries (SQL) with MongoDB syntax (NoSQL)
     
 ## Motivation
 
-Writing SQL statements to query DocumentDB's NoSQL database seemed slightly odd to me, especially when it came to writing the more complex, [SQLi](https://en.wikipedia.org/wiki/SQL_injection)-free, [parameterized queries](https://azure.microsoft.com/en-us/blog/announcing-sql-parameterization-in-documentdb/). This project exists to abstract the building of these large query objects by utilizing MongoDB-style syntax. 
+Writing SQL statements to query DocumentDB's NoSQL database seemed slightly odd to me, especially when it came to writing the more complex, [SQLi](https://en.wikipedia.org/wiki/SQL_injection)-free, [parameterized queries](https://azure.microsoft.com/en-us/documentation/articles/documentdb-sql-query/#parameterized-sql-queries). This project exists to abstract the building of these large query objects by utilizing MongoDB-style syntax. 
 
 ## Usage
 
@@ -62,8 +62,9 @@ These query snippets can be combined or nested as appropriate, as long as proper
 
 ## In Development
 
-This project is currently under development while I add support for all DocumentDB operators, as well as more query configuration options.
+This project is currently under heavy development while I add support for all DocumentDB operators, as well as more query configuration options.
 
+* [ ] 
 * [ ] Configuration for what to SELECT (`SELECT c.name, c.other...`)
 * [ ] Configuration for custom collection name (`...FROM myName m WHERE m.field = ...`)
 
@@ -75,6 +76,6 @@ This project is currently under development while I add support for all Document
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-## History
+<!--## History
 
-* 0.1.0 - 2016.09.xx - Initial release
+* 0.1.0 - 2016.09.xx - Initial release-->
