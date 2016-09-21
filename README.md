@@ -49,8 +49,7 @@ The result of the example `buildQuery(myQuery)` above:
 ```
 
 ## Supported Operators
-The format below is: **operator** `{ query snippet }`
-
+The format below is: **operator** `{ query snippet }` 
 These query snippets can be combined or nested as appropriate, as long as proper syntax is maintained.
 
 * **$and** `{x: 5, y: 10}` or `{$and: [{x: 5}, {y: 10}]}`
