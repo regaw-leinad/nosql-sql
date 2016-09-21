@@ -55,6 +55,10 @@ These query snippets can be combined or nested as appropriate, as long as proper
 * **$and** `{x: 5, y: 10}` or `{$and: [{x: 5}, {y: 10}]}`
 * **$between** `{x: {$between: [1, 7]}}`
 * **$gt** `{x: {$gt: 7}}`
+* **$gte** `{x: {$gte: 10}}`
+* **$in** `{x: {$in: [1, 2, "alpha", "Dan"]}}`
+* **$lt** `{x: {$lt: 14}}`
+* **$lte** `{x: {$lte: "abd"}}`
 
 ## In Development
 
