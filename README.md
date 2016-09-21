@@ -49,6 +49,7 @@ The result of the example `buildQuery(myQuery)` above:
 ```
 
 ## Supported Operators
+
 The format below is: **operator** `{ query snippet }`  
 These query snippets can be combined or nested as appropriate, as long as proper syntax is maintained.
 
@@ -64,9 +65,19 @@ These query snippets can be combined or nested as appropriate, as long as proper
 
 This project is currently under heavy development while I add support for all DocumentDB operators, as well as more query configuration options.
 
-* [ ] 
-* [ ] Configuration for what to SELECT (`SELECT c.name, c.other...`)
-* [ ] Configuration for custom collection name (`...FROM myName m WHERE m.field = ...`)
+* Additional operator support
+    * Mathematical functions
+        * `ABS, CEILING, EXP, FLOOR, LOG, LOG10, POWER, ROUND, SIGN, SQRT, SQUARE, TRUNC, ACOS, ASIN, ATAN, ATN2, COS, COT, DEGREES, PI, RADIANS, SIN, TAN`
+    * Type checking functions
+        * `S_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED, IS_PRIMITIVE`
+    * String functions
+        * `CONCAT, CONTAINS, ENDSWITH, INDEX_OF, LEFT, LENGTH, LOWER, LTRIM, REPLACE, REPLICATE, REVERSE, RIGHT, RTRIM, STARTSWITH, SUBSTRING, UPPER`
+    * Array functions
+        * `ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH, ARRAY_SLICE`
+    * Spacial functions
+        * `ST_DISTANCE, ST_WITHIN, ST_ISVALID, ST_ISVALIDDETAILED`
+* Configuration for what to SELECT (`SELECT c.name, c.other...`)
+* Configuration for custom collection name (`...FROM myName m WHERE m.field = ...`)
 
 ## Contributing
 
