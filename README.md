@@ -61,11 +61,16 @@ These query snippets can be combined or nested as appropriate, as long as proper
 * **$lt** `{x: {$lt: 14}}`
 * **$lte** `{x: {$lte: "abd"}}`
 
-## In Development
+## Future Development
 
 This project is currently under heavy development while I add support for all DocumentDB operators, as well as more query configuration options.
 
 * Additional operator support
+    * Binary Operators
+        * Arithmetic - `+, -, *, /, %`
+        * Bitwise - `|, &, ^, <, >>, >>>`
+        * Logical - `OR, NOT, NOR, NAND`
+        * Comparison - `=, !=, <, >, <=, >=, <>`
     * [Mathematical functions](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_mathematical_functions)
         * `ABS, CEILING, EXP, FLOOR, LOG, LOG10, POWER, ROUND, SIGN, SQRT, SQUARE, TRUNC, ACOS, ASIN, ATAN, ATN2, COS, COT, DEGREES, PI, RADIANS, SIN, TAN`
     * [Type checking functions](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_type_checking_functions)
@@ -76,6 +81,7 @@ This project is currently under heavy development while I add support for all Do
         * `ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH, ARRAY_SLICE`
     * [Spacial functions](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_spatial_functions)
         * `ST_DISTANCE, ST_WITHIN, ST_ISVALID, ST_ISVALIDDETAILED`
+* User Defined Function (UDF) support
 * Configuration for what to SELECT (`SELECT c.name, c.other...`)
 * Configuration for custom collection name (`...FROM myName m WHERE m.field = ...`)
 
